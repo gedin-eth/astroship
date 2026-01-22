@@ -14,11 +14,15 @@ import { Icon } from "astro-icon/components";
         </p>
       </div>
 
+      <iframe name="hidden_iframe" id="hidden_iframe" style="display:none;" onload="if(submitted) {document.getElementById('waitlist-form').classList.add('hidden'); document.getElementById('success-message').classList.remove('hidden');}"></iframe>
+
       <form
         id="waitlist-form"
         class="flex flex-col gap-4"
         method="POST"
-        action="YOUR_GOOGLE_SCRIPT_URL_HERE">
+        target="hidden_iframe"
+        action="https://script.google.com/macros/s/AKfycbznuGllYkE3YPUME8-vWU4BZc2OnPRLkdLlxMCEQLmC_K5QJDyte4ORmaPvF-fiZjSfAg/exec"
+        onsubmit="submitted=true;">
         
         <div>
           <label for="name" class="block text-sm font-medium text-slate-700 mb-1">Full Name</label>
@@ -61,9 +65,10 @@ import { Icon } from "astro-icon/components";
 
         <button
           type="submit"
-          class="mt-2 w-full bg-slate-900 text-white font-bold py-3 px-4 rounded-lg hover:bg-slate-800 transition flex items-center justify-center gap-2">
+          style="background-color: #0f172a; color: white;" 
+          class="mt-2 w-full py-3 px-4 rounded-lg hover:opacity-90 transition flex items-center justify-center gap-2 font-bold">
           <span>Join Waitlist</span>
-          <Icon name="bx:bxs-rocket" class="w-5 h-5" />
+          <Icon name="bx:bxs-rocket" class="w-5 h-5 text-white" />
         </button>
 
         <p class="text-xs text-center text-slate-500 mt-4">
@@ -87,36 +92,6 @@ import { Icon } from "astro-icon/components";
   </Container>
 </Layout>
 
-<script>
-  // This script simulates form submission. 
-  // To start collecting data in a real Google Sheet, you can easily set up a Google Apps Script.
-  // 1. Create a Google Sheet.
-  // 2. Extensions > Apps Script.
-  // 3. Paste a script to handle POST requests (doPost).
-  // 4. Deploy as Web App (Anyone can access).
-  // 5. Replace 'YOUR_GOOGLE_SCRIPT_URL_HERE' in the form action with your script URL.
-  
-  const form = document.getElementById("waitlist-form");
-  const successMessage = document.getElementById("success-message");
-
-  if (form) {
-    form.addEventListener("submit", async (e) => {
-      e.preventDefault();
-      
-      const button = form.querySelector("button");
-      const originalText = button.innerHTML;
-      button.disabled = true;
-      button.innerHTML = "<span>Saving...</span>";
-
-      // Simulate network request
-      await new Promise(resolve => setTimeout(resolve, 1000));
-      
-      // In a real implementation, you would use fetch() here:
-      // const formData = new FormData(form);
-      // await fetch(form.action, { method: 'POST', body: formData });
-
-      form.classList.add("hidden");
-      successMessage.classList.remove("hidden");
-    });
-  }
+<script is:inline>
+  var submitted = false;
 </script>
