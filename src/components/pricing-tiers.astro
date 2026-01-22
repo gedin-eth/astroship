@@ -1,0 +1,121 @@
+---
+import Link from "./ui/link.astro";
+import { Icon } from "astro-icon/components";
+
+const tiers = [
+  {
+    name: "Standard",
+    price: "$29",
+    period: "/month",
+    description: "Perfect for solo developers and small projects",
+    features: [
+      "50 GB storage included",
+      "Unlimited API calls",
+      "Client-side encryption",
+      "LangChain integration",
+      "Email support",
+      "Data export anytime"
+    ],
+    cta: "Request Access",
+    link: "/signup",
+    highlighted: false,
+  },
+  {
+    name: "Pro",
+    price: "$99",
+    period: "/month",
+    description: "For production agents and growing teams",
+    features: [
+      "500 GB storage included",
+      "Unlimited API calls",
+      "Everything in Standard, plus:",
+      "Priority support",
+      "Advanced analytics",
+      "Team collaboration",
+      "SLA guarantee"
+    ],
+    cta: "Request Access",
+    link: "/signup",
+    highlighted: true,
+  },
+  {
+    name: "Enterprise",
+    price: "Custom",
+    period: "",
+    description: "Sovereign infrastructure for your organization",
+    features: [
+      "Unlimited storage",
+      "Unlimited API calls",
+      "Everything in Pro, plus:",
+      "Dedicated infrastructure",
+      "Custom SLA",
+      "On-premise option",
+      "White-glove onboarding"
+    ],
+    cta: "Contact Sales",
+    highlighted: false,
+  },
+];
+---
+
+<div class="mt-24" id="pricing">
+  <div class="text-center">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+      Transparent Pricing
+    </h2>
+    <p class="text-lg mt-4 text-slate-600">
+      Simple, predictable pricing as you scale. No hidden fees.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-8 mt-16 max-w-6xl mx-auto">
+    {
+      tiers.map((tier) => (
+        <div
+          class={`rounded-lg border-2 p-8 flex flex-col ${
+            tier.highlighted
+              ? "border-purple-500 shadow-xl shadow-purple-500/20 scale-105"
+              : "border-slate-200"
+          }`}>
+          {tier.highlighted && (
+            <div class="bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs font-bold px-3 py-1 rounded-full w-fit mb-4">
+              MOST POPULAR
+            </div>
+          )}
+          <h3 class="text-2xl font-bold">{tier.name}</h3>
+          <p class="text-slate-600 text-sm mt-2">{tier.description}</p>
+          <div class="mt-6">
+            <span class="text-5xl font-bold">{tier.price}</span>
+            <span class="text-slate-600">{tier.period}</span>
+          </div>
+          <ul class="mt-8 space-y-3 flex-grow">
+            {tier.features.map((feature) => (
+              <li class="flex items-start gap-2">
+                <Icon
+                  class="w-5 h-5 text-green-600 shrink-0 mt-0.5"
+                  name="bx:bx-check"
+                />
+                <span class="text-slate-700">{feature}</span>
+              </li>
+            ))}
+          </ul>
+          <div class="mt-8">
+            <Link
+              href={tier.link || "/signup"}
+              size="lg"
+              block={true}
+              style={tier.highlighted ? "primary" : "outline"}>
+              {tier.cta}
+            </Link>
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-12 text-center">
+    <p class="text-slate-600">
+      All plans include: End-to-end encryption • Data portability • GDPR compliance • 99.9% uptime
+    </p>
+  </div>
+</div>

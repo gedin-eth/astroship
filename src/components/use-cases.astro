@@ -1,0 +1,71 @@
+---
+import { Icon } from "astro-icon/components";
+
+const useCases = [
+  {
+    title: "Indie Developers",
+    description: "Build and ship AI agents without breaking the bank. Start free, scale affordably.",
+    icon: "bx:bxs-user",
+    benefits: [
+      "No upfront costs",
+      "Pay-as-you-grow pricing",
+      "Full feature access on free tier"
+    ]
+  },
+  {
+    title: "Enterprises",
+    description: "Meet compliance requirements with sovereign, auditable AI infrastructure.",
+    icon: "bx:bxs-building",
+    benefits: [
+      "Data residency controls",
+      "GDPR-compliant deletion",
+      "Custom SLAs available"
+    ]
+  },
+  {
+    title: "Web3 Projects",
+    description: "Native decentralized storage for on-chain agents and data markets.",
+    icon: "bx:bxs-network-chart",
+    benefits: [
+      "Walrus Protocol integration",
+      "Verifiable availability",
+      "Programmable storage"
+    ]
+  }
+];
+---
+
+<div class="mt-24">
+  <div class="text-center mb-12">
+    <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+      Built for Every Builder
+    </h2>
+    <p class="text-lg mt-4 text-slate-600">
+      From solo hackers to Fortune 500s, sovereign memory infrastructure for all.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
+    {
+      useCases.map((useCase) => (
+        <div class="bg-white rounded-xl p-8 border-2 border-slate-200 hover:border-purple-500 hover:shadow-xl transition-all duration-300">
+          <div class="bg-gradient-to-br from-purple-600 to-blue-600 rounded-full p-3 w-14 h-14 flex items-center justify-center mb-4">
+            <Icon class="text-white w-8 h-8" name={useCase.icon} />
+          </div>
+          <h3 class="text-2xl font-bold text-slate-900">{useCase.title}</h3>
+          <p class="text-slate-600 mt-3 leading-relaxed">
+            {useCase.description}
+          </p>
+          <ul class="mt-6 space-y-2">
+            {useCase.benefits.map((benefit) => (
+              <li class="flex items-center gap-2 text-slate-700">
+                <Icon class="w-5 h-5 text-green-600" name="bx:bx-check-circle" />
+                {benefit}
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))
+    }
+  </div>
+</div>

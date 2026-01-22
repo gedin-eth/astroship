@@ -1,0 +1,69 @@
+---
+// @ts-ignore
+import { Icon } from "astro-icon/components";
+
+const features = [
+  {
+    title: "90% Cost Reduction",
+    description:
+      "Walrus Protocol's erasure-coded storage costs ~$1-2/month for 100GB vs $30-100+ on traditional vector DBs. Memory shouldn't break your budget.",
+    icon: "bx:bxs-dollar-circle",
+  },
+  {
+    title: "Encrypted by Default",
+    description:
+      "Client-side encryption with Seal SDK. Your keys, your data. Zero-knowledge architecture means we can't read your agent's memories.",
+    icon: "bx:bxs-lock-alt",
+  },
+  {
+    title: "True Data Portability",
+    description:
+      "Export your entire memory store anytime. Switch providers, migrate platforms, or self-host. No vendor lock-in, ever.",
+    icon: "bx:bxs-package",
+  },
+  {
+    title: "Agent-Native API",
+    description:
+      "Drop-in replacements for LangChain, CrewAI, and AutoGPT. Time-scoped memories, per-user boundaries, and privacy controls built in.",
+    icon: "bx:bxs-bot",
+  },
+  {
+    title: "Compliance Ready",
+    description:
+      "GDPR-compliant deletion, data residency controls, and audit logs. Built for regulated industries that need sovereign AI infrastructure.",
+    icon: "bx:bxs-check-shield",
+  },
+  {
+    title: "Decentralized & Durable",
+    description:
+      "Walrus Protocol provides 4-5x redundancy with verifiable availability. Your agent's memory survives even if we don't.",
+    icon: "bx:bxs-network-chart",
+  },
+];
+---
+
+<div class="mt-16 md:mt-0">
+  <h2 class="text-4xl lg:text-5xl font-bold lg:tracking-tight">
+    Agent Memory, Reimagined
+  </h2>
+  <p class="text-lg mt-4 text-slate-600">
+    Vector DBs cost 30-40% of agent operating expenses. Octostore is a sovereign alternative 
+    that's cheaper, encrypted, and truly yours.
+  </p>
+</div>
+
+<div class="grid sm:grid-cols-2 md:grid-cols-3 mt-16 gap-16">
+  {
+    features.map((item) => (
+      <div class="flex gap-4 items-start">
+        <div class="mt-1 bg-black rounded-full  p-2 w-8 h-8 shrink-0">
+          <Icon class="text-white" name={item.icon} />
+        </div>
+        <div>
+          <h3 class="font-semibold text-lg">{item.title}</h3>{" "}
+          <p class="text-slate-500 mt-2 leading-relaxed">{item.description}</p>
+        </div>
+      </div>
+    ))
+  }
+</div>

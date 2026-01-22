@@ -1,0 +1,70 @@
+---
+const stats = [
+  {
+    number: "90%",
+    label: "Cost Reduction",
+    description: "vs traditional vector DBs"
+  },
+  {
+    number: "$1-2",
+    label: "Per 100GB/month",
+    description: "Walrus Protocol pricing"
+  },
+  {
+    number: "30-40%",
+    label: "Of Agent Costs",
+    description: "Memory & retrieval overhead"
+  },
+  {
+    number: "4-5x",
+    label: "Redundancy",
+    description: "Erasure-coded durability"
+  }
+];
+---
+
+<div class="mt-24 bg-gradient-to-br from-slate-50 to-purple-50 py-16 rounded-2xl">
+  <div class="text-center mb-12">
+    <h2 class="text-3xl lg:text-4xl font-bold lg:tracking-tight">
+      The Numbers Don't Lie
+    </h2>
+    <p class="text-lg mt-4 text-slate-600">
+      Agent memory is expensive. We're fixing that.
+    </p>
+  </div>
+
+  <div class="grid md:grid-cols-4 gap-8 max-w-6xl mx-auto px-8">
+    {
+      stats.map((stat) => (
+        <div class="text-center">
+          <div class="text-5xl font-bold bg-gradient-to-r from-purple-600 to-blue-600 bg-clip-text text-transparent">
+            {stat.number}
+          </div>
+          <div class="text-lg font-semibold mt-2 text-slate-900">
+            {stat.label}
+          </div>
+          <div class="text-sm text-slate-600 mt-1">
+            {stat.description}
+          </div>
+        </div>
+      ))
+    }
+  </div>
+
+  <div class="mt-16 max-w-4xl mx-auto px-8">
+    <div class="bg-white rounded-xl p-8 shadow-lg border border-slate-200">
+      <div class="flex items-start gap-4">
+        <div class="text-6xl">💡</div>
+        <div>
+          <h3 class="text-xl font-bold text-slate-900">Why This Matters</h3>
+          <p class="text-slate-700 mt-2 leading-relaxed">
+            Vector databases and memory systems represent <strong>30-40% of operating costs</strong> for live agents. 
+            As agentic AI scales, this becomes unsustainable. Octostore leverages Walrus Protocol's 
+            erasure-coded storage to deliver the same durability and performance at a fraction of the cost—while 
+            giving you <strong>true ownership</strong> of your data.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
